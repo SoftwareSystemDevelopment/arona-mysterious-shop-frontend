@@ -1,7 +1,9 @@
+import { useNavigate } from "@solidjs/router";
 import SearchBar from "../SearchBar";
 import { DropdownButton, PageButton } from "./page";
 
 export default () => {
+  const navigator = useNavigate();
   return (
     <nav class="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
       <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
@@ -22,6 +24,7 @@ export default () => {
           <button
             type="button"
             class="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={() => navigator("/auth")}
           >
             登录/注册
           </button>
@@ -57,7 +60,7 @@ export default () => {
           id="navbar-sticky"
         >
           <ul class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium lg:mt-0 lg:flex-row lg:space-x-8 lg:border-0 lg:bg-white lg:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 lg:dark:bg-gray-900">
-            <PageButton isSelected={true} children="主页" />
+            <PageButton isSelected={true} children="主页" url="/" />
             <PageButton isSelected={false} children="关于" />
             <PageButton isSelected={false} children="服务" />
             <PageButton isSelected={false} children="联系" />
