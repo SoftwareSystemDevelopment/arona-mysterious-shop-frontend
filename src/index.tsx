@@ -1,19 +1,34 @@
 /* @refresh reload */
+import { JSX, lazy } from "solid-js";
 import { render } from "solid-js/web";
 import { Route, Router } from "@solidjs/router";
-import { Auth, GoodsDetail, Home, NotFound } from "~/pages";
+import { Navbar } from "~/components";
 import "./index.css";
 
-const root = document.getElementById("root");
+interface AppProps {
+  children?: JSX.Element;
+}
+
+const App = (props: AppProps) => (
+  <>
+    <Navbar />
+    {props.children}
+  </>
+);
+
+const Auth = lazy(() => import("~/pages/Auth"));
+const GoodDetails = lazy(() => import("~/pages/GoodDetails"));
+const Home = lazy(() => import("~/pages/Home"));
+const NotFound = lazy(() => import("~/pages/NotFound"));
 
 render(
   () => (
-    <Router>
-      <Route path="/" component={Home} />
+    <Router root={App}>
       <Route path="/auth" component={Auth} />
-      <Route path="/detail/*" component={GoodsDetail} />
-      <Route path="*/404" component={NotFound} />
+      <Route path="/details/*" component={GoodDetails} />
+      <Route path="/" component={Home} />
+      <Route path="*404" component={NotFound} />
     </Router>
   ),
-  root!,
+  document.getElementById("root")!,
 );

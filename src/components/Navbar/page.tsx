@@ -12,33 +12,31 @@ interface PageProps {
   children?: JSX.Element;
 }
 
-export const PageButton = (props: PageProps) => {
-  return (
-    <Show
-      when={props.isSelected}
-      fallback={
-        <li>
-          <a
-            href={props.url === undefined ? "#" : props.url}
-            class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent lg:dark:hover:text-blue-500"
-          >
-            {props.children}
-          </a>
-        </li>
-      }
-    >
+export const PageButton = (props: PageProps) => (
+  <Show
+    when={props.isSelected}
+    fallback={
       <li>
         <a
           href={props.url === undefined ? "#" : props.url}
-          class="block rounded bg-blue-700 px-3 py-2 text-white lg:bg-transparent lg:p-0 lg:text-blue-700 dark:bg-blue-600 lg:dark:bg-transparent lg:dark:text-blue-500"
-          aria-current="page"
+          class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent lg:dark:hover:text-blue-500"
         >
           {props.children}
         </a>
       </li>
-    </Show>
-  );
-};
+    }
+  >
+    <li>
+      <a
+        href={props.url === undefined ? "#" : props.url}
+        class="block rounded bg-blue-700 px-3 py-2 text-white lg:bg-transparent lg:p-0 lg:text-blue-700 dark:bg-blue-600 lg:dark:bg-transparent lg:dark:text-blue-500"
+        aria-current="page"
+      >
+        {props.children}
+      </a>
+    </li>
+  </Show>
+);
 
 /**
  * 一个DropDown里面，每一个下拉元素的数据信息
@@ -66,6 +64,7 @@ interface DropdownProps {
 
 export const DropdownButton = (props: DropdownProps) => {
   const [isPressed, setIsPressed] = createSignal(false);
+
   return (
     <li>
       <button
