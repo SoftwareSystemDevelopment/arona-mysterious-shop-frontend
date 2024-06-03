@@ -1,3 +1,5 @@
+/// TODO(yur): review this file
+
 import { createSignal } from "solid-js";
 import { Carousel } from "~/components";
 
