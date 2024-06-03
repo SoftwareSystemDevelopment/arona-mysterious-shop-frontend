@@ -1,3 +1,5 @@
+/// TODO(yur): review this file
+
 import { For, Match, Show, Switch, createSignal } from "solid-js";
 
 interface CarouselProps {

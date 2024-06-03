@@ -1,30 +1,20 @@
 import { createSignal } from "solid-js";
-import { Badge, Carousel } from "~/components";
+import { Button, Card } from "~/components";
 
 export default () => {
   const [count, setCount] = createSignal(0);
 
   return (
-    <div class="bg-gray-50">
-      <div class="py-20">
-        <div class="px-10">
-          <Carousel
-            interval={2000}
-            urls={["/img1.webp", "/img2.webp", "img3.webp"]}
-          />
-        </div>
-
-        <h1>Arona's Mysterious Shop</h1>
-        <Badge>qwq</Badge>
-        <div>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count()}
-          </button>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
-        </div>
-      </div>
+    <div class="flex justify-center">
+      <Card class="flex w-4/5 max-w-[1080px] flex-col items-center space-y-4">
+        <h1 class="text-3xl font-bold">Arona's Mysterious Shop</h1>
+        <Button onClick={() => setCount((c) => c + 1)}>
+          count is {count()}
+        </Button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </Card>
     </div>
   );
 };
