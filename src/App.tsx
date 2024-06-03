@@ -5,7 +5,7 @@ export default () => {
 
   return (
     <>
-      <h1>Vite + Solid</h1>
+      <h1>Arona's Mysterious Shop</h1>
       <div>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count()}
