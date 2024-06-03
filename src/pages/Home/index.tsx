@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import { Badge, Navbar } from "~/components";
+import { Badge, Carousel, Navbar } from "~/components";
 
 export default () => {
   const [count, setCount] = createSignal(0);
@@ -7,7 +7,14 @@ export default () => {
   return (
     <div class="bg-gray-50">
       <Navbar />
-      <div>
+      <div class="py-20">
+        <div class="px-10">
+          <Carousel
+            interval={2000}
+            urls={["/img1.webp", "/img2.webp", "img3.webp"]}
+          />
+        </div>
+
         <h1>Arona's Mysterious Shop</h1>
         <Badge>qwq</Badge>
         <div>
