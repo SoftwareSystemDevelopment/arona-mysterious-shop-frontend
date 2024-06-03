@@ -1,140 +1,138 @@
 import { Match, Switch, createSignal } from "solid-js";
-import { Navbar } from "~/components";
+
 type AuthType = "login" | "register";
+
 export default () => {
   const [type, setType] = createSignal<AuthType>("login");
 
   return (
-    <>
-      <Navbar />
-      <Switch>
-        <Match when={type() === "login"}>
-          <div class="py-20">
-            <h1 class="py-5 text-center text-3xl">登录</h1>
-            <form class="mx-auto max-w-sm">
-              <div class="mb-5">
-                <label
-                  for="email"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  用户名
-                </label>
+    <Switch>
+      <Match when={type() === "login"}>
+        <div class="py-20">
+          <h1 class="py-5 text-center text-3xl">登录</h1>
+          <form class="mx-auto max-w-sm">
+            <div class="mb-5">
+              <label
+                for="email"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                用户名
+              </label>
+              <input
+                id="email"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder="name@flowbite.com"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                密码
+              </label>
+              <input
+                type="password"
+                id="password"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-5 flex items-start justify-between">
+              <div class="flex h-5 items-center">
                 <input
-                  id="email"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  placeholder="name@flowbite.com"
-                  required
+                  id="remember"
+                  type="checkbox"
+                  value=""
+                  class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                 />
-              </div>
-              <div class="mb-5">
                 <label
-                  for="password"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  for="remember"
+                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  密码
+                  记住我
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div class="mb-5 flex items-start justify-between">
-                <div class="flex h-5 items-center">
-                  <input
-                    id="remember"
-                    type="checkbox"
-                    value=""
-                    class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    for="remember"
-                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    记住我
-                  </label>
-                </div>
-                <button
-                  onClick={() => setType("register")}
-                  class="ms-2 text-sm font-medium text-blue-500 underline hover:text-blue-900 dark:text-gray-300"
-                >
-                  没有账号？前往注册
-                </button>
               </div>
               <button
-                type="submit"
-                class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={() => setType("register")}
+                class="ms-2 text-sm font-medium text-blue-500 underline hover:text-blue-900 dark:text-gray-300"
               >
-                登录
+                没有账号？前往注册
               </button>
-            </form>
-          </div>
-        </Match>
-        <Match when={type() === "register"}>
-          <div class="py-20">
-            <h1 class="py-5 text-center text-3xl">注册</h1>
-            <form class="mx-auto max-w-sm">
-              <div class="mb-5">
-                <label
-                  for="email"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  用户名
-                </label>
-                <input
-                  id="email"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  placeholder="name@flowbite.com"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <label
-                  for="password"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  密码
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <label
-                  for="password"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  重复密码
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div class="mb-5 flex flex-row-reverse items-start">
-                <button
-                  onClick={() => setType("login")}
-                  class="ms-2 text-sm font-medium text-blue-500 underline hover:text-blue-900 dark:text-gray-300"
-                >
-                  已注册？前往登录
-                </button>
-              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              登录
+            </button>
+          </form>
+        </div>
+      </Match>
+      <Match when={type() === "register"}>
+        <div class="py-20">
+          <h1 class="py-5 text-center text-3xl">注册</h1>
+          <form class="mx-auto max-w-sm">
+            <div class="mb-5">
+              <label
+                for="email"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                用户名
+              </label>
+              <input
+                id="email"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder="name@flowbite.com"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                密码
+              </label>
+              <input
+                type="password"
+                id="password"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                重复密码
+              </label>
+              <input
+                type="password"
+                id="password"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-5 flex flex-row-reverse items-start">
               <button
-                type="submit"
-                class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={() => setType("login")}
+                class="ms-2 text-sm font-medium text-blue-500 underline hover:text-blue-900 dark:text-gray-300"
               >
-                注册
+                已注册？前往登录
               </button>
-            </form>
-          </div>
-        </Match>
-      </Switch>
-    </>
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              注册
+            </button>
+          </form>
+        </div>
+      </Match>
+    </Switch>
   );
 };

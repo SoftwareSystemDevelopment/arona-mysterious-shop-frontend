@@ -1,12 +1,11 @@
 import { createSignal } from "solid-js";
-import { Badge, Carousel, Navbar } from "~/components";
+import { Badge, Carousel } from "~/components";
 
 export default () => {
   const [count, setCount] = createSignal(0);
 
   return (
     <div class="bg-gray-50">
-      <Navbar />
       <div class="py-20">
         <div class="px-10">
           <Carousel

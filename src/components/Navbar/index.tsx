@@ -1,9 +1,10 @@
 import { useNavigate } from "@solidjs/router";
-import SearchBar from "../SearchBar";
+import { SearchBar } from "~/components";
 import { DropdownButton, PageButton } from "./page";
 
 export default () => {
   const navigator = useNavigate();
+
   return (
     <nav class="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
       <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">

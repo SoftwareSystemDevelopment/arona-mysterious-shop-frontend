@@ -1,15 +1,14 @@
-import { createEffect, createSignal } from "solid-js";
-import { Carousel, Navbar } from "~/components";
+import { createSignal } from "solid-js";
+import { Carousel } from "~/components";
 
 export default () => {
   // 商品个数
   const [count, setCount] = createSignal<number>(0);
+
   const intRegex = /^\d+$/;
-  const add = () => setCount(count() + 1);
-  const sub = () => setCount(count() >= 1 ? count() - 1 : 0);
+
   return (
     <>
-      <Navbar />
       <div class="flex justify-between py-20">
         <div class="w-1/2 px-4 py-2">
           <Carousel interval={5000} urls={["/img1.webp", "/img2.webp"]} />
@@ -28,7 +27,15 @@ export default () => {
             </div>
             <div class="flex space-x-2">
               <button
-                onClick={sub}
+                onClick={() =>
+                  setCount((c) => {
+                    if (c >= 1) {
+                      return c - 1;
+                    }
+
+                    return 0;
+                  })
+                }
                 type="button"
                 disabled={count() === 0}
                 class="mb-2 me-2 rounded-full bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none disabled:bg-gray-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -39,16 +46,19 @@ export default () => {
                 <input
                   onChange={(e) => {
                     const result = intRegex.test(e.currentTarget.value);
-                    if (result)
+
+                    if (result) {
                       setCount(Number.parseInt(e.currentTarget.value));
-                    else e.currentTarget.value = count().toString();
+                    } else {
+                      e.currentTarget.value = count().toString();
+                    }
                   }}
                   value={count()}
                   class="inline-block w-20 rounded-lg border border-gray-300 bg-gray-50 p-2 text-center text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 />
               </div>
               <button
-                onClick={add}
+                onClick={() => setCount((c) => c + 1)}
                 type="button"
                 class="mb-2 me-2 rounded-full bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
