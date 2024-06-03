@@ -108,7 +108,7 @@ export default (props: CarouselProps) => {
         </For>
       </div>
       <button
-        onClick={() => previousIndex()}
+        onClick={previousIndex}
         type="button"
         class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         data-carousel-prev
@@ -133,7 +133,7 @@ export default (props: CarouselProps) => {
         </span>
       </button>
       <button
-        onClick={() => nextIndex()}
+        onClick={nextIndex}
         type="button"
         class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         data-carousel-next
