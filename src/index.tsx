@@ -24,7 +24,7 @@ const NotFound = lazy(() => import("~/pages/NotFound"));
 
 render(
   () => (
-    <Router root={App}>
+    <Router base="/arona-mysterious-shop-frontend" root={App}>
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/details/*" component={GoodDetails} />
