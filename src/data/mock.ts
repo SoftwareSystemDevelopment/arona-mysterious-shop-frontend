@@ -1,3 +1,5 @@
+import { GoodInfo } from "~/data/interface";
+
 export const mockGoods = [
   {
     id: "123",
@@ -37,3 +39,16 @@ export const mockGoods = [
     price: 612.213,
   },
 ];
+
+export const mockGoodInfo: GoodInfo = {
+  id: 123,
+  name: "商品标题",
+  cover: "/arona-mysterious-shop-frontend/img1.webp",
+  price: 2.421,
+  stock: 114514,
+  types: ["shit"],
+  status: 0,
+  userId: 1,
+  createTime: 114514,
+  updateTime: 114514,
+};
