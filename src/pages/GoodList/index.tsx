@@ -1,6 +1,5 @@
 import { For, createSignal } from "solid-js";
-import { Card, SearchBar } from "~/components";
-import GoodBrief from "./GoodBrief";
+import { Card, GoodBrief, SearchBar } from "~/components";
 import { mockGoods } from "~/data/mock";
 
 export default () => {

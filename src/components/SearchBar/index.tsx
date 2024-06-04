@@ -1,5 +1,9 @@
-export default () => (
-  <div class="relative">
+import { JSX } from "solid-js";
+
+interface SearchBarProps extends JSX.HTMLAttributes<HTMLDivElement> {}
+
+export default (props: SearchBarProps) => (
+  <div class="relative" {...props}>
     <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
       <svg
         class="h-4 w-4 text-gray-500"
