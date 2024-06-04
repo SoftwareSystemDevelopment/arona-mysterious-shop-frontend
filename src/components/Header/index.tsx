@@ -50,6 +50,7 @@ export default () => {
       <div class="space-x-8">
         <MenuItem href="/">主页</MenuItem>
         <MenuItem href="/goods">商品列表</MenuItem>
+        <MenuItem href="/cart">购物车</MenuItem>
       </div>
       <div class="flex items-center space-x-3">
         <SearchBar />
