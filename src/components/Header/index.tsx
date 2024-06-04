@@ -33,9 +33,6 @@ export default () => {
       <div class="space-x-8">
         <MenuItem href="/">主页</MenuItem>
         <MenuItem href="/goods">商品列表</MenuItem>
-        <MenuItem href="/about">关于</MenuItem>
-        <MenuItem href="/service">服务</MenuItem>
-        <MenuItem href="/contact">联系</MenuItem>
       </div>
       <div class="flex space-x-3">
         <SearchBar />
