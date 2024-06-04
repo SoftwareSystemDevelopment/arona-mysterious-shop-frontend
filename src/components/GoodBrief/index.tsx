@@ -27,11 +27,11 @@ export default (props: GoodBriefProps) => {
   const price = createMemo(() => Math.round(props.price * 100) / 100);
 
   return (
-    <div class="m-2 flex h-[300px] w-[240px] flex-col items-center space-y-2 rounded-md bg-white/20 p-4 hover:bg-white/40">
+    <div class="m-2 flex w-[240px] flex-col items-center space-y-2 rounded-md bg-white/20 p-4 hover:bg-white/40">
       <A href={`/goods/${props.id}`}>
         <img src={props.image} />
       </A>
-      <A class="overflow-hidden text-xl" href={`/goods/${props.id}`}>
+      <A class="line-clamp-3 text-xl" href={`/goods/${props.id}`}>
         {props.title}
       </A>
       <span class="text-lg text-red-600">{`￥${price()}`}</span>
