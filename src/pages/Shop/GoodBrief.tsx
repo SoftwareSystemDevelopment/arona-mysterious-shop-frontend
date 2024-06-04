@@ -31,7 +31,7 @@ export default (props: GoodBriefProps) => {
       <A href={`/goods/${props.id}`}>
         <img src={props.image} />
       </A>
-      <A class="overflow-hidden text-xl" href={`/goods/${props.id}`}>
+      <A class="h-[30%] overflow-hidden text-xl" href={`/goods/${props.id}`}>
         {props.title}
       </A>
       <span class="text-lg text-red-600">{`￥${price()}`}</span>
