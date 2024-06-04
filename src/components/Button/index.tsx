@@ -1,7 +1,9 @@
 import { JSX, splitProps } from "solid-js";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
+  type?: "submit" | "reset" | "button";
+}
 
 export default (props: ButtonProps) => {
   const [local, others] = splitProps(props, ["children", "class"]);
