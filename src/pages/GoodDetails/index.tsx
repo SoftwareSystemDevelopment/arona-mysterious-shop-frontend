@@ -1,7 +1,7 @@
 /// TODO(yur): review this file
 
 import { createSignal } from "solid-js";
-import { Carousel } from "~/components";
+import { Card, Carousel } from "~/components";
 
 export default () => {
   // 商品个数
@@ -10,20 +10,26 @@ export default () => {
   const intRegex = /^\d+$/;
 
   return (
-    <>
-      <div class="flex justify-between py-20">
+    <Card class="mx-auto w-[87.5%] items-center">
+      <div class="flex w-full justify-between py-20">
         <div class="w-1/2 px-4 py-2">
-          <Carousel interval={5000} urls={["/img1.webp", "/img2.webp"]} />
+          <Carousel
+            interval={5000}
+            urls={[
+              "/arona-mysterious-shop-frontend/img1.webp",
+              "/arona-mysterious-shop-frontend/img2.webp",
+            ]}
+          />
         </div>
         <div class="h-1/5 w-1/2 flex-col px-4 py-2">
           <h1 class="bold text-4xl">商品标题</h1>
-          <div class="mt-2 h-2/5 w-3/4">
+          <div class="mt-2 h-2/5 w-full">
             <p class="h-60 overflow-hidden text-blue-400">
               这是商品详细描述啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕啊锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕锕ni锕锕锕锕锕锕锕
             </p>
           </div>
           {/* 购物数量按钮 */}
-          <div class="my-2 flex h-1/5 w-3/4 justify-between">
+          <div class="my-2 flex h-1/5 w-full justify-between">
             <div class="flex-col-reverse">
               <h1 class="bold text-3xl text-red-600">¥1.00</h1>
             </div>
@@ -69,7 +75,7 @@ export default () => {
             </div>
           </div>
           {/* 购买按钮 */}
-          <div class="my-2 flex h-1/5 w-3/4 justify-between">
+          <div class="my-2 flex h-1/5 w-full justify-between">
             <button
               type="button"
               class="me-2 inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -109,9 +115,9 @@ export default () => {
           </div>
         </div>
       </div>
-      <div class="mx-4 h-full w-[87.5%] text-center outline">
+      <div class="h-full w-full rounded-lg px-4 text-center outline outline-2 outline-blue-500">
         <h1 class="text-5xl">商品详情页面</h1>
       </div>
-    </>
+    </Card>
   );
 };
