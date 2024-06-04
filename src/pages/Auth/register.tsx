@@ -1,69 +1,90 @@
-/// TODO(yur): review this file
-
-import { Card } from "~/components";
+import { createSignal } from "solid-js";
+import { A } from "@solidjs/router";
+import { Button, Card } from "~/components";
 
 export default () => {
+  const [username, setUsername] = createSignal("");
+  const [password, setPassword] = createSignal("");
+  const [passwd2, setPasswd2] = createSignal("");
+
+  // TODO: register
+  const onRegister = () => {
+    const user = username().trim();
+    const pass = password().trim();
+    const pass2 = passwd2().trim();
+
+    if (pass !== pass2) {
+      console.error("两次输入密码不一致！");
+      return;
+    }
+
+    console.log(`Username: ${user}`);
+    console.log(`Password: ${pass}`);
+  };
+
   return (
-    <Card class="py-20">
-      <h1 class="py-5 text-center text-3xl">注册</h1>
-      <form class="mx-auto max-w-sm">
-        <div class="mb-5">
-          <label
-            for="email"
-            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            用户名
-          </label>
-          <input
-            id="email"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="name@flowbite.com"
-            required
-          />
-        </div>
-        <div class="mb-5">
-          <label
-            for="password"
-            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            密码
-          </label>
-          <input
-            type="password"
-            id="password"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            required
-          />
-        </div>
-        <div class="mb-5">
-          <label
-            for="password"
-            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            重复密码
-          </label>
-          <input
-            type="password"
-            id="password"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            required
-          />
-        </div>
-        <div class="mb-5 flex flex-row-reverse items-start">
-          <button
-            // onClick={() => setType("login")}
-            class="ms-2 text-sm font-medium text-blue-500 underline hover:text-blue-900 dark:text-gray-300"
-          >
-            已注册？前往登录
-          </button>
-        </div>
-        <button
-          type="submit"
-          class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    <div class="flex justify-center">
+      <Card class="flex w-4/5 max-w-[1080px] flex-col items-center space-y-4 py-8">
+        <h1 class="text-3xl">新用户注册</h1>
+        <form
+          class="flex w-3/5 flex-col space-y-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            onRegister();
+          }}
         >
-          注册
-        </button>
-      </form>
-    </Card>
+          <div class="flex items-center space-x-4">
+            <label for="username" class="font-medium text-gray-900">
+              用户名
+            </label>
+            <input
+              id="username"
+              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Username"
+              onInput={(e) => setUsername(e.currentTarget.value)}
+              value={username()}
+              required
+            />
+          </div>
+          <div class="flex items-center space-x-4">
+            <label for="password" class="font-medium text-gray-900">
+              密码
+            </label>
+            <input
+              type="password"
+              id="password"
+              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Password"
+              onInput={(e) => setPassword(e.currentTarget.value)}
+              value={password()}
+              required
+            />
+          </div>
+          <div class="flex items-center space-x-4">
+            <label for="passwd2" class="font-medium text-gray-900">
+              重复密码
+            </label>
+            <input
+              type="password"
+              id="passwd2"
+              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Repeat Password"
+              onInput={(e) => setPasswd2(e.currentTarget.value)}
+              value={passwd2()}
+              required
+            />
+          </div>
+          <div class="flex flex-row-reverse">
+            <span class="text-sm font-medium">
+              已经注册？前往
+              <A class="text-blue-500 hover:text-blue-900" href="/login">
+                登录
+              </A>
+            </span>
+          </div>
+          <Button type="submit">注册</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
