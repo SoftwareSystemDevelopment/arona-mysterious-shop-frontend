@@ -31,11 +31,7 @@ export default () => {
                   </A>
                 </td>
                 <td class="border p-2">
-                  <GoodBrief
-                    id={item.goodId}
-                    title={item.title}
-                    image={item.cover}
-                  />
+                  <GoodBrief {...item.good} />
                 </td>
               </tr>
             )}

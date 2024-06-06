@@ -18,17 +18,22 @@ export interface User {
   userRole: string;
 }
 
+export interface List<T> {
+  records: T[];
+  total: string;
+  size: string;
+  current: string;
+  pages: string;
+}
+
 export interface GoodInfo {
-  id: number;
-  name: string;
-  cover: string;
-  price: number;
+  productId: number;
+  productName: string;
+  productPrice: number;
+  productCategoryName: string;
   stock: number;
-  types: string[];
-  status: number;
-  userId: number;
-  createTime: number;
-  updateTime: number;
+  providerId: string;
+  productCreateDate: string;
 }
 
 export interface Address {
@@ -42,7 +47,5 @@ export interface Order {
   orderStatus: string;
   shopId: string;
   shopName: string;
-  goodId: string;
-  title: string;
-  cover: string;
+  good: GoodInfo;
 }

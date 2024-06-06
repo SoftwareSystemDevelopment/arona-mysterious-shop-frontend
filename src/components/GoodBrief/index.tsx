@@ -1,48 +1,22 @@
-import { Show, createMemo } from "solid-js";
+import { createMemo } from "solid-js";
 import { A } from "@solidjs/router";
+import { GoodInfo } from "~/data/interface";
 
-interface GoodBriefProps {
-  /**
-   * 商品 id
-   */
-  id: string;
-
-  /**
-   * 商品标题
-   */
-  title: string;
-
-  /**
-   * 商品图片 url
-   */
-  image: string;
-
-  /**
-   * 商品价格
-   */
-  price?: number;
-}
+interface GoodBriefProps extends GoodInfo {}
 
 export default (props: GoodBriefProps) => {
-  const price = createMemo(() => {
-    if (typeof props.price === "undefined") {
-      return undefined;
-    }
-
-    return Math.round(props.price * 100) / 100;
-  });
+  const price = createMemo(() => Math.round(props.productPrice * 100) / 100);
 
   return (
     <div class="m-2 flex w-[240px] flex-col items-center space-y-2 rounded-md bg-white/20 p-4 hover:bg-white/40">
-      <A href={`/goods/${props.id}`}>
-        <img src={props.image} />
+      <A href={`/goods/${props.productId}`}>
+        {/* TODO: good image */}
+        <img src="/arona-mysterious-shop-frontend/img1.webp" />
       </A>
-      <A class="line-clamp-3 text-xl" href={`/goods/${props.id}`}>
-        {props.title}
+      <A class="line-clamp-3 text-xl" href={`/goods/${props.productId}`}>
+        {props.productName}
       </A>
-      <Show when={price()}>
-        {(p) => <span class="text-lg text-red-600">{`￥${p()}`}</span>}
-      </Show>
+      <span class="text-lg text-red-600">{`￥${price()}`}</span>
     </div>
   );
 };
