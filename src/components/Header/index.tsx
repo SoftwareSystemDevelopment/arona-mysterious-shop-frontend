@@ -1,5 +1,7 @@
-import { JSX } from "solid-js";
+import { JSX, Show } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
+import { Response } from "~/data/interface";
+import { useState } from "~/store";
 import { Button, SearchBar } from "~/components";
 
 interface MenuItemProps {
@@ -22,6 +24,21 @@ const MenuItem = (props: MenuItemProps) => (
 export default () => {
   const navigate = useNavigate();
 
+  const [state, setState] = useState();
+
+  const onLogout = async () => {
+    const resp = await fetch("/api/user/logout", { method: "POST" });
+    const res: Response<boolean> = await resp.json();
+
+    if (res.data !== null) {
+      setState("currentUser", null);
+      alert("注销成功！");
+      navigate("/");
+    } else {
+      alert(`注销失败！原因：${res.message}`);
+    }
+  };
+
   return (
     <nav class="mb-3 flex h-16 w-full items-center justify-between bg-white/50 px-24 backdrop-blur-md">
       <A class="flex items-center space-x-3 hover:text-gray-700" href="/">
@@ -34,10 +51,25 @@ export default () => {
         <MenuItem href="/">主页</MenuItem>
         <MenuItem href="/goods">商品列表</MenuItem>
       </div>
-      <div class="flex space-x-3">
+      <div class="flex items-center space-x-3">
         <SearchBar />
-        <Button onClick={() => navigate("/login")}>登录</Button>
-        <Button onClick={() => navigate("/register")}>注册</Button>
+        <Show
+          when={state.currentUser}
+          fallback={
+            <>
+              <Button onClick={() => navigate("/login")}>登录</Button>
+              <Button onClick={() => navigate("/register")}>注册</Button>
+            </>
+          }
+        >
+          {(me) => (
+            <>
+              <span>你好，{me().userName}！</span>
+              <Button>个人中心</Button>
+              <Button onClick={onLogout}>注销</Button>
+            </>
+          )}
+        </Show>
       </div>
     </nav>
   );
