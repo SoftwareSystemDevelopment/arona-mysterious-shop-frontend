@@ -1,17 +1,36 @@
 import { createSignal } from "solid-js";
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
+import { Response, User } from "~/data/interface";
 import { Button, Card } from "~/components";
 
 export default () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
   const [remember, setRemember] = createSignal(false);
 
-  // TODO: login
-  const onLogin = () => {
-    console.log(`Username: ${username()}`);
-    console.log(`Password: ${password()}`);
-    console.log(`Remember: ${remember()}`);
+  const onLogin = async () => {
+    const user = username().trim();
+    const pass = password().trim();
+
+    const resp = await fetch("/api/user/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        userAccount: user,
+        userPassword: pass,
+      }),
+    });
+
+    const res: Response<User> = await resp.json();
+
+    if (res.data !== null) {
+      alert(`登录成功！用户名：${res.data.userAccount}`);
+      navigate("/");
+    } else {
+      alert(`登录失败！原因：${res.message}`);
+    }
   };
 
   return (
