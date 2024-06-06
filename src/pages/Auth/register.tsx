@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
+import { Response } from "~/data/interface";
 import { Button, Card } from "~/components";
 
 export default () => {
@@ -30,15 +31,9 @@ export default () => {
       }),
     });
 
-    interface RegisterResp {
-      code: number;
-      data: string | null;
-      message: string;
-    }
+    const res: Response<string> = await resp.json();
 
-    const res: RegisterResp = await resp.json();
-
-    if (res.code === 0) {
+    if (res.data !== null) {
       alert(`注册成功！用户 id：${res.data}`);
       navigate("/login");
     } else {
