@@ -11,7 +11,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/api": "http://localhost:8101",
+      "/api": "http://192.168.31.147:8101",
     },
   },
   base: "/arona-mysterious-shop-frontend",
