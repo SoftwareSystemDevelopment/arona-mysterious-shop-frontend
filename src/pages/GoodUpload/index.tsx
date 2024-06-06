@@ -210,7 +210,7 @@ export default () => {
               <FormItem id="price" label="商品价格">
                 <div class="flex space-x-3 text-center text-lg">
                   <div class="flex rounded-lg border border-gray-300 bg-white">
-                    <h1 class="mx-1 pt-1">¥</h1>
+                    <h1 class="ml-1 pt-1">¥</h1>
                     <input
                       onChange={(e) => {
                         const num = Number.parseFloat(e.currentTarget.value);
@@ -223,7 +223,7 @@ export default () => {
                       id="price"
                       type="number"
                       value="0.00"
-                      class="px-2 py-1 text-right"
+                      class="py-1 pr-2 focus:ring-0"
                     />
                     <h1 class="mx-1 pt-1">元</h1>
                   </div>
@@ -231,18 +231,20 @@ export default () => {
               </FormItem>
               <FormItem id="stock" label="库存">
                 <div class="flex space-x-3 text-center text-lg">
-                  <input
-                    onChange={(e) => {
-                      const num = Number.parseFloat(e.currentTarget.value);
-                      if (Math.round(num) !== num || num < 0)
-                        e.currentTarget.value = "1";
-                    }}
-                    id="price"
-                    type="number"
-                    value="1"
-                    class="rounded-lg border border-gray-300 px-2 py-1 text-right"
-                  />
-                  <h1 class="pt-1">件</h1>
+                  <div class="flex rounded-lg border border-gray-300 bg-white">
+                    <input
+                      onChange={(e) => {
+                        const num = Number.parseFloat(e.currentTarget.value);
+                        if (Math.round(num) !== num || num < 0)
+                          e.currentTarget.value = "1";
+                      }}
+                      id="price"
+                      type="number"
+                      value="1"
+                      class="mx-2 py-1"
+                    />
+                    <h1 class="mx-1 pt-1">件</h1>
+                  </div>
                 </div>
               </FormItem>
               <FormItem
