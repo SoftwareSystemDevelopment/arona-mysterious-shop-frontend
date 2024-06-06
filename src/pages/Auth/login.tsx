@@ -1,10 +1,13 @@
 import { createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { Response, User } from "~/data/interface";
+import { useState } from "~/store";
 import { Button, Card } from "~/components";
 
 export default () => {
   const navigate = useNavigate();
+
+  const [_state, setState] = useState();
 
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
@@ -26,6 +29,7 @@ export default () => {
     const res: Response<User> = await resp.json();
 
     if (res.data !== null) {
+      setState("currentUser", res.data);
       alert(`登录成功！用户名：${res.data.userAccount}`);
       navigate("/");
     } else {
