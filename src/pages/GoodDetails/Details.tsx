@@ -5,7 +5,7 @@ import { Button, Card } from "~/components";
 interface DetailsProps extends GoodInfo {}
 
 export default (props: DetailsProps) => {
-  const price = createMemo(() => Math.round(props.price * 100) / 100);
+  const price = createMemo(() => Math.round(props.productPrice * 100) / 100);
 
   const [count, setCount] = createSignal(0);
 
@@ -13,11 +13,15 @@ export default (props: DetailsProps) => {
     <div class="flex justify-center space-x-4">
       <Card class="flex w-3/5 max-w-[810px] py-8">
         <div class="flex-[3]">
-          <img class="rounded-md" src={props.cover} />
+          {/* TODO: good image */}
+          <img
+            class="rounded-md"
+            src="/arona-mysterious-shop-frontend/img1.webp"
+          />
         </div>
         <div class="flex flex-[2] flex-col justify-between px-4 py-2">
           <div class="space-y-2">
-            <h1 class="text-3xl font-bold">{props.name}</h1>
+            <h1 class="text-3xl font-bold">{props.productName}</h1>
             <p class="text-blue-400">
               {
                 // TODO: good description
