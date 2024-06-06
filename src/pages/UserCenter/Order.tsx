@@ -1,3 +1,5 @@
+/// TODO(yur): review this file
+
 import { A } from "@solidjs/router";
 import { Card } from "~/components";
 
@@ -49,7 +51,7 @@ const OrderItem = (props: {
   );
 };
 
-export const OrderTag = () => {
+export default () => {
   return (
     <div>
       <div class="w-full">

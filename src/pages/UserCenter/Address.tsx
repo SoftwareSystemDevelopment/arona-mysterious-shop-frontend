@@ -1,3 +1,5 @@
+/// TODO(yur): review this file
+
 import { Show, createSignal } from "solid-js";
 import { Button, Card } from "~/components";
 
@@ -22,7 +24,7 @@ const AddressItem = (props: { name: string; tel: string; address: string }) => {
   );
 };
 
-export const AddressTag = () => {
+export default () => {
   const [showAddAddress, setShowAddAddress] = createSignal(true);
   return (
     <div>

@@ -65,7 +65,7 @@ export default () => {
           {(me) => (
             <>
               <span>你好，{me().userName}！</span>
-              <Button>个人中心</Button>
+              <Button onClick={() => navigate("/user/basic")}>个人中心</Button>
               <Button onClick={onLogout}>注销</Button>
             </>
           )}
