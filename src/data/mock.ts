@@ -28,8 +28,6 @@ export const mockGoods = [
   },
 ];
 
-export const mockGoodInfo = mockGoods[0];
-
 export const mockAddresses = [
   {
     name: "AerVento",
