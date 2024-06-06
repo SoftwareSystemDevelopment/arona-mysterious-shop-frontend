@@ -73,3 +73,26 @@ export const mockAddresses = [
       "address-address-address-address-address-address-address-address-address",
   },
 ];
+
+export const mockOrders = [
+  {
+    orderId: "123",
+    orderStatus: "待付款",
+    shopId: "123",
+    shopName:
+      "店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称店铺名称",
+    goodId: "123",
+    title:
+      "商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题",
+    cover: "/arona-mysterious-shop-frontend/img3.webp",
+  },
+  {
+    orderId: "123",
+    orderStatus: "待付款",
+    shopId: "123",
+    shopName: "店铺名称",
+    goodId: "123",
+    title: "商品标题",
+    cover: "/arona-mysterious-shop-frontend/img2.webp",
+  },
+];

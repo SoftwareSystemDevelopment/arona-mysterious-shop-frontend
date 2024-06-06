@@ -12,10 +12,10 @@ export default () => {
       <table class="w-full bg-white/20">
         <thead>
           <tr class="bg-white/40">
-            <th class="border p-2">收件人</th>
-            <th class="border p-2">电话号码</th>
-            <th class="border p-2">递送地址</th>
-            <th class="border p-2">操作</th>
+            <th class="whitespace-nowrap border p-2">收件人</th>
+            <th class="whitespace-nowrap border p-2">电话号码</th>
+            <th class="whitespace-nowrap border p-2">递送地址</th>
+            <th class="whitespace-nowrap border p-2">操作</th>
           </tr>
         </thead>
         <tbody>
