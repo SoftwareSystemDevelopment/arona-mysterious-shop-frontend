@@ -1,29 +1,28 @@
 import { Match, Switch } from "solid-js";
 import { useParams } from "@solidjs/router";
 import { QueryFunction, createQuery } from "@tanstack/solid-query";
-import { GoodInfo } from "~/data/interface";
+import { GoodInfo, Response } from "~/data/interface";
 import { Card } from "~/components";
 import Details from "./Details";
-import { mockGoodInfo } from "~/data/mock";
 
-// const queryFn: QueryFunction<GoodInfo> = async (props) => {
-//   const resp = await fetch(`/api/goodsInfo/get?id=${props.queryKey[1]}`);
+const queryFn: QueryFunction<GoodInfo> = async (props) => {
+  const resp = await fetch(`/api/product/get/vo?id=${props.queryKey[1]}`);
 
-//   if (!resp.ok) {
-//     throw new Error(resp.statusText);
-//   }
+  const res: Response<GoodInfo> = await resp.json();
 
-//   return resp.json();
-// };
+  if (res.data === null) {
+    throw new Error(res.message);
+  }
 
-const mockQueryFn: QueryFunction<GoodInfo> = () => mockGoodInfo;
+  return res.data;
+};
 
 export default () => {
   const params = useParams();
 
   const query = createQuery<GoodInfo>(() => ({
     queryKey: ["goods", params.id],
-    queryFn: mockQueryFn,
+    queryFn,
   }));
 
   return (
