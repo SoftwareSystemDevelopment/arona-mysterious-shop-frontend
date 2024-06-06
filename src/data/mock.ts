@@ -52,3 +52,24 @@ export const mockGoodInfo: GoodInfo = {
   createTime: 114514,
   updateTime: 114514,
 };
+
+export const mockAddresses = [
+  {
+    name: "AerVento",
+    tel: "12345612345",
+    address:
+      "address-address-address-address-address-address-address-address-address",
+  },
+  {
+    name: "AerVento",
+    tel: "12345612345",
+    address:
+      "address-address-address-address-address-address-address-address-address",
+  },
+  {
+    name: "AerVento",
+    tel: "12345612345",
+    address:
+      "address-address-address-address-address-address-address-address-address",
+  },
+];
