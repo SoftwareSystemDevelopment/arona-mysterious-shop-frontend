@@ -1,22 +1,9 @@
-import { Match, Show, Signal, Switch, createSignal } from "solid-js";
+import { JSX } from "solid-js";
 import { Card } from "~/components";
 import { BasicTag } from "./Basic";
 import { AddressTag } from "./Address";
 import { OrderTag } from "./Order";
-
-type SettingType =
-  /**
-   * 基本信息
-   */
-  | "Basic"
-  /**
-   * 收货地址
-   */
-  | "Address"
-  /**
-   * 订单信息
-   */
-  | "Order";
+import { A, Navigate, Route } from "@solidjs/router";
 
 const TagButton = (props: {
   /**
@@ -24,40 +11,26 @@ const TagButton = (props: {
    */
   content: string;
   /**
-   * 当前所在页签的Signal
+   * 跳转的url
    */
-  type: Signal<SettingType>;
-  /**
-   * 点击后要切换的页签
-   */
-  target: SettingType;
+  url: string;
 }) => {
-  const [type, setType] = props.type;
   return (
-    <Show
-      when={type() == props.target}
-      fallback={
-        <button
-          onClick={() => setType(props.target)}
-          class="w-full text-center text-lg text-black hover:text-blue-500"
-        >
-          <p class="py-2">{props.content}</p>
-        </button>
-      }
+    <A
+      href={props.url}
+      activeClass="w-full text-center text-lg text-blue-700"
+      inactiveClass="w-full text-center text-lg text-black hover:text-blue-500"
     >
-      <button
-        onClick={() => setType(props.target)}
-        class="w-full text-center text-lg text-blue-700"
-      >
-        <p class="py-2">{props.content}</p>
-      </button>
-    </Show>
+      <p class="py-2">{props.content}</p>
+    </A>
   );
 };
 
-export default () => {
-  const signal = createSignal<SettingType>("Basic");
-  const type = signal[0];
+interface UserCenterProps {
+  children?: JSX.Element;
+}
+
+export default (props: UserCenterProps) => {
   return (
     <div class="space-y-3">
       <div class="mx-auto w-[80%] px-3">
@@ -68,29 +41,28 @@ export default () => {
       <div class="mx-auto flex w-[80%]">
         <div class="w-[20%] px-3">
           <Card class="w-full">
-            <TagButton type={signal} target="Basic" content="基本信息" />
+            <TagButton url="/user/basic" content="基本信息" />
             <hr />
-            <TagButton type={signal} target="Address" content="收货地址" />
+            <TagButton url="/user/address" content="收货地址" />
             <hr />
-            <TagButton type={signal} target="Order" content="订单信息" />
+            <TagButton url="/user/order" content="订单信息" />
           </Card>
         </div>
         <div class="w-[80%] px-3">
-          <Card class="w-full">
-            <Switch>
-              <Match when={type() === "Basic"}>
-                <BasicTag />
-              </Match>
-              <Match when={type() === "Address"}>
-                <AddressTag />
-              </Match>
-              <Match when={type() === "Order"}>
-                <OrderTag />
-              </Match>
-            </Switch>
-          </Card>
+          <Card class="w-full">{props.children}</Card>
         </div>
       </div>
     </div>
+  );
+};
+
+export const UserCenterRoutes = () => {
+  return (
+    <>
+      <Route path="/basic" component={BasicTag} />
+      <Route path="/address" component={AddressTag} />
+      <Route path="/order" component={OrderTag} />
+      <Route path="/" component={() => <Navigate href="/user/basic" />} />
+    </>
   );
 };
