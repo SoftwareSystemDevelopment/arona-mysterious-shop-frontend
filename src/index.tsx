@@ -23,14 +23,14 @@ const Login = lazy(() => import("~/pages/Auth/login"));
 const GoodDetails = lazy(() => import("~/pages/GoodDetails"));
 const GoodList = lazy(() => import("~/pages/GoodList"));
 const Shop = lazy(() => import("~/pages/Shop"));
-const UserCenter = lazy(() => import("~/pages/UserCenter"));
+const UserCenterWrapper = lazy(async () => ({
+  default: (await import("~/pages/UserCenter")).UserCenterWrapper,
+}));
+const UserCenterRoutes = lazy(async () => ({
+  default: (await import("~/pages/UserCenter")).UserCenterRoutes,
+}));
 const Home = lazy(() => import("~/pages/Home"));
 const NotFound = lazy(() => import("~/pages/NotFound"));
-const UserCenterRoutes = lazy(() =>
-  import("~/pages/UserCenter").then((e) => {
-    return { default: e.UserCenterRoutes };
-  }),
-);
 
 const queryClient = new QueryClient();
 
@@ -44,7 +44,7 @@ render(
           <Route path="/goods/:id" component={GoodDetails} />
           <Route path="/goods" component={GoodList} />
           <Route path="/shops/:id" component={Shop} />
-          <Route path="/user" component={UserCenter}>
+          <Route path="/user" component={UserCenterWrapper}>
             <UserCenterRoutes />
           </Route>
           <Route path="/" component={Home} />
