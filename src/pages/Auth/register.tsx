@@ -1,14 +1,15 @@
 import { createSignal } from "solid-js";
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import { Button, Card } from "~/components";
 
 export default () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
   const [passwd2, setPasswd2] = createSignal("");
 
-  // TODO: register
-  const onRegister = () => {
+  const onRegister = async () => {
     const user = username().trim();
     const pass = password().trim();
     const pass2 = passwd2().trim();
@@ -18,8 +19,31 @@ export default () => {
       return;
     }
 
-    console.log(`Username: ${user}`);
-    console.log(`Password: ${pass}`);
+    const resp = await fetch("/api/user/register", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        userAccount: user,
+        userName: user,
+        userPassword: pass,
+        userRole: "user",
+      }),
+    });
+
+    interface RegisterResp {
+      code: number;
+      data: string | null;
+      message: string;
+    }
+
+    const res: RegisterResp = await resp.json();
+
+    if (res.code === 0) {
+      alert(`注册成功！用户 id：${res.data}`);
+      navigate("/login");
+    } else {
+      alert(`注册失败！原因：${res.message}`);
+    }
   };
 
   return (
