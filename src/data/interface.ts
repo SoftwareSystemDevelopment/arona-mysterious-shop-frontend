@@ -30,3 +30,9 @@ export interface GoodInfo {
   createTime: number;
   updateTime: number;
 }
+
+export interface Address {
+  name: string;
+  tel: string;
+  address: string;
+}
