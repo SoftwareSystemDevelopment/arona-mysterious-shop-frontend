@@ -36,3 +36,13 @@ export interface Address {
   tel: string;
   address: string;
 }
+
+export interface Order {
+  orderId: string;
+  orderStatus: string;
+  shopId: string;
+  shopName: string;
+  goodId: string;
+  title: string;
+  cover: string;
+}
