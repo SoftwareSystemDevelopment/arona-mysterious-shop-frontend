@@ -6,6 +6,7 @@ import { mockGoods } from "~/data/mock";
 const DropdownFilter = () => <Button>筛选</Button>;
 
 export default () => {
+  // TODO: 改为使用mockShops
   const [data, _setData] = createSignal(mockGoods);
 
   return (

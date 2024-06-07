@@ -25,6 +25,7 @@ const GoodDetails = lazy(() => import("~/pages/GoodDetails"));
 const GoodList = lazy(() => import("~/pages/GoodList"));
 const ShoppingCart = lazy(() => import("~/pages/ShoppingCart"));
 const Shop = lazy(() => import("~/pages/Shop"));
+const OrderDetail = lazy(() => import("~/pages/OrderDetail"));
 const UserCenterWrapper = lazy(async () => ({
   default: (await import("~/pages/UserCenter")).UserCenterWrapper,
 }));
@@ -48,6 +49,7 @@ render(
           <Route path="/goods" component={GoodList} />
           <Route path="/cart" component={ShoppingCart} />
           <Route path="/shops/:id" component={Shop} />
+          <Route path="/orders/:id" component={OrderDetail} />
           <Route path="/user" component={UserCenterWrapper}>
             <UserCenterRoutes />
           </Route>

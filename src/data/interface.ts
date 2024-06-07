@@ -40,13 +40,25 @@ export interface Address {
   userPhone: string;
 }
 
-// TODO: sync with backend
-export interface Order {
-  orderId: string;
-  orderStatus: string;
-  shopId: string;
-  shopName: string;
-  good: GoodInfo;
+export interface OrderItemInfo {
+  id: number;
+  orderId: number;
+  productId: number;
+  quantity: number;
+  price: number;
+  orderItemCreateDate: string;
+  orderItemUpdateDate: string;
+  productName: string;
+}
+
+export interface OrderInfo {
+  orderId: number;
+  orderAddress: string;
+  orderReceiver: string;
+  orderMobile: string;
+  orderPayDate: string;
+  orderStatus: number;
+  orderItems: OrderItemInfo[];
 }
 
 export interface CartItemInfo {
