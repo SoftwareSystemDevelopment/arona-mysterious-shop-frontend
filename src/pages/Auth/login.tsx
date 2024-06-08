@@ -2,7 +2,7 @@ import { createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { Response, User } from "~/data/interface";
 import { useState } from "~/store";
-import { Button, Card } from "~/components";
+import { Button, Card, Checkbox } from "~/components";
 
 export default () => {
   const navigate = useNavigate();
@@ -76,18 +76,12 @@ export default () => {
             />
           </div>
           <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-1">
-              <input
-                id="remember"
-                type="checkbox"
-                class="border border-gray-300 bg-gray-50 focus:ring-blue-300"
-                onInput={(e) => setRemember(e.currentTarget.checked)}
-                checked={remember()}
-              />
-              <label for="remember" class="text-sm font-medium text-gray-900">
-                记住我
-              </label>
-            </div>
+            <Checkbox
+              id="remember"
+              label="记住我"
+              onInput={(e) => setRemember(e.currentTarget.checked)}
+              checked={remember()}
+            />
             <span class="text-sm font-medium">
               还没有账号？前往
               <A class="text-blue-500 hover:text-blue-900" href="/register">

@@ -20,9 +20,9 @@ const App = (props: AppProps) => (
 
 const Register = lazy(() => import("~/pages/Auth/register"));
 const Login = lazy(() => import("~/pages/Auth/login"));
+const GoodUpload = lazy(() => import("~/pages/GoodUpload"));
 const GoodDetails = lazy(() => import("~/pages/GoodDetails"));
 const GoodList = lazy(() => import("~/pages/GoodList"));
-const GoodUpload = lazy(() => import("~/pages/GoodUpload"));
 const Shop = lazy(() => import("~/pages/Shop"));
 const UserCenterWrapper = lazy(async () => ({
   default: (await import("~/pages/UserCenter")).UserCenterWrapper,
@@ -42,9 +42,9 @@ render(
         <Router base="/arona-mysterious-shop-frontend" root={App}>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/goods/upload" component={GoodUpload} />
           <Route path="/goods/:id" component={GoodDetails} />
           <Route path="/goods" component={GoodList} />
-          <Route path="/goods/upload" component={GoodUpload} />
           <Route path="/shops/:id" component={Shop} />
           <Route path="/user" component={UserCenterWrapper}>
             <UserCenterRoutes />

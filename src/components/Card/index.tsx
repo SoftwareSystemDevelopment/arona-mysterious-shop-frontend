@@ -1,10 +1,7 @@
 import { JSX } from "solid-js";
 import { twMerge } from "tailwind-merge";
 
-interface CardProps {
-  children: JSX.Element;
-  class?: string;
-}
+interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 
 export default (props: CardProps) => (
   <div
