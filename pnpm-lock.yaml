@@ -12,8 +12,8 @@ importers:
         specifier: ^0.13.5
         version: 0.13.5(solid-js@1.8.17)
       '@tanstack/solid-query':
-        specifier: ^5.40.1
-        version: 5.40.1(solid-js@1.8.17)
+        specifier: ^5.40.2
+        version: 5.40.2(solid-js@1.8.17)
       solid-js:
         specifier: ^1.8.17
         version: 1.8.17
@@ -437,8 +437,8 @@ packages:
   '@tanstack/query-core@5.40.0':
     resolution: {integrity: sha512-eD8K8jsOIq0Z5u/QbvOmfvKKE/XC39jA7yv4hgpl/1SRiU+J8QCIwgM/mEHuunQsL87dcvnHqSVLmf9pD4CiaA==}
 
-  '@tanstack/solid-query@5.40.1':
-    resolution: {integrity: sha512-2eMGS3ufwxycfSm6B2JoB/ne2N5xAJ0Kb3QHxicK15uwcb1p08iXclgViwCVjbFW4KUGjxgR4u/FTrin/QvuTw==}
+  '@tanstack/solid-query@5.40.2':
+    resolution: {integrity: sha512-q28T4/duuBaoVGxrswcj6W7ZBkRPJXpuBn7rZB6WMmvbcJzd9f47vOdRJBj2o+aLvIwkRMJHmh1ZRS8lphgBRg==}
     peerDependencies:
       solid-js: ^1.6.0
 
@@ -1850,7 +1850,7 @@ snapshots:
 
   '@tanstack/query-core@5.40.0': {}
 
-  '@tanstack/solid-query@5.40.1(solid-js@1.8.17)':
+  '@tanstack/solid-query@5.40.2(solid-js@1.8.17)':
     dependencies:
       '@tanstack/query-core': 5.40.0
       solid-js: 1.8.17
