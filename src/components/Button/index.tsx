@@ -1,12 +1,10 @@
 import { JSX, splitProps } from "solid-js";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
-  type?: "submit" | "reset" | "button";
-}
+interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export default (props: ButtonProps) => {
-  const [local, others] = splitProps(props, ["children", "class"]);
+  const [local, others] = splitProps(props, ["class"]);
 
   return (
     <button
@@ -15,8 +13,6 @@ export default (props: ButtonProps) => {
         local.class,
       )}
       {...others}
-    >
-      {local.children}
-    </button>
+    />
   );
 };
