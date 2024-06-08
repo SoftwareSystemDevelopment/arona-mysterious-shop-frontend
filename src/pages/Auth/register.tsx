@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { Response } from "~/data/interface";
-import { Button, Card } from "~/components";
+import { Button, Card, Form } from "~/components";
 
 export default () => {
   const navigate = useNavigate();
@@ -43,56 +43,36 @@ export default () => {
 
   return (
     <div class="flex justify-center">
-      <Card class="flex w-4/5 max-w-[1080px] flex-col items-center space-y-4 py-8">
-        <h1 class="text-3xl">新用户注册</h1>
-        <form
-          class="flex w-3/5 flex-col space-y-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-            onRegister();
-          }}
-        >
-          <div class="flex items-center space-x-4">
-            <label for="username" class="font-medium text-gray-900">
-              用户名
-            </label>
-            <input
-              id="username"
-              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-              placeholder="Username"
-              onInput={(e) => setUsername(e.currentTarget.value)}
-              value={username()}
-              required
-            />
-          </div>
-          <div class="flex items-center space-x-4">
-            <label for="password" class="font-medium text-gray-900">
-              密码
-            </label>
-            <input
-              type="password"
-              id="password"
-              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-              placeholder="Password"
-              onInput={(e) => setPassword(e.currentTarget.value)}
-              value={password()}
-              required
-            />
-          </div>
-          <div class="flex items-center space-x-4">
-            <label for="passwd2" class="font-medium text-gray-900">
-              重复密码
-            </label>
-            <input
-              type="password"
-              id="passwd2"
-              class="flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-              placeholder="Repeat Password"
-              onInput={(e) => setPasswd2(e.currentTarget.value)}
-              value={passwd2()}
-              required
-            />
-          </div>
+      <Card class="flex w-2/5 max-w-[540px] flex-col items-center">
+        <Form class="w-full" onSubmit={onRegister}>
+          <h1 class="text-2xl font-semibold">新用户注册</h1>
+          <hr />
+          <Form.Item
+            id="username"
+            label="用户名"
+            placeholder="Username"
+            onInput={(e) => setUsername(e.currentTarget.value)}
+            value={username()}
+            required
+          />
+          <Form.Item
+            id="password"
+            label="密码"
+            type="password"
+            placeholder="Password"
+            onInput={(e) => setPassword(e.currentTarget.value)}
+            value={password()}
+            required
+          />
+          <Form.Item
+            id="passwd2"
+            label="重复密码"
+            type="password"
+            placeholder="Repeat Password"
+            onInput={(e) => setPasswd2(e.currentTarget.value)}
+            value={passwd2()}
+            required
+          />
           <div class="flex flex-row-reverse">
             <span class="text-sm font-medium">
               已经注册？前往
@@ -101,8 +81,9 @@ export default () => {
               </A>
             </span>
           </div>
+          <hr />
           <Button type="submit">注册</Button>
-        </form>
+        </Form>
       </Card>
     </div>
   );
