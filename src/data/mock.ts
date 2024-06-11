@@ -1,3 +1,5 @@
+import { CommentInfo } from "./interface";
+
 export const mockGoods = [
   {
     productId: 1000839,
@@ -64,5 +66,22 @@ export const mockOrders = [
     shopId: "123",
     shopName: "店铺名称",
     good: mockGoods[1],
+  },
+];
+
+export const mockComments: CommentInfo[] = [
+  {
+    commentId: 123,
+    commentUserId: 123,
+    commentProductId: 123,
+    commentContent: "垃圾",
+    commentCreateDate: "2021年3月9日15:12:22",
+  },
+  {
+    commentId: 123,
+    commentUserId: 123,
+    commentProductId: 123,
+    commentContent: "非常好产品，下次还会买",
+    commentCreateDate: "2021年3月3日15:12:12",
   },
 ];
