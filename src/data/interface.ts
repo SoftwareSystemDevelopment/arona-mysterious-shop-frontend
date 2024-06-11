@@ -49,11 +49,3 @@ export interface Order {
   shopName: string;
   good: GoodInfo;
 }
-
-export interface CommentInfo {
-  commentContent: string;
-  commentCreateDate: string;
-  commentId: number;
-  commentProductId: number;
-  commentUserId: number;
-}
