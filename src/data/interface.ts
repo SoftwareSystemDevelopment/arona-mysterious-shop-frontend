@@ -11,19 +11,17 @@ interface ErrResponse {
 }
 
 export interface User {
-  userId: string;
+  userId: number;
   userName: string;
   userAccount: string;
   userAvatar: string | null;
   userRole: string;
+  cartId: number;
 }
 
 export interface List<T> {
   records: T[];
-  total: string;
-  size: string;
-  current: string;
-  pages: string;
+  total: number;
 }
 
 export interface GoodInfo {
@@ -32,16 +30,17 @@ export interface GoodInfo {
   productPrice: number;
   productCategoryName: string;
   stock: number;
-  providerId: string;
-  productCreateDate: string;
+  providerId: number;
+  productDescription: string;
 }
 
 export interface Address {
-  name: string;
-  tel: string;
-  address: string;
+  addressName: string;
+  receiver: string;
+  userPhone: string;
 }
 
+// TODO: sync with backend
 export interface Order {
   orderId: string;
   orderStatus: string;

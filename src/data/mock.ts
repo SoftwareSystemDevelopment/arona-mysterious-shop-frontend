@@ -1,12 +1,14 @@
-export const mockGoods = [
+import { Address, GoodInfo } from "~/data/interface";
+
+export const mockGoods: GoodInfo[] = [
   {
     productId: 1000839,
     productName: "111",
     productPrice: 100.33,
     productCategoryName: "ooparts",
     stock: 100,
-    providerId: "6",
-    productCreateDate: "2024-06-05 18:14:26",
+    providerId: 6,
+    productDescription: "2024-06-05 18:14:26",
   },
   {
     productId: 1000840,
@@ -14,8 +16,8 @@ export const mockGoods = [
     productPrice: 0.0,
     productCategoryName: "ooparts",
     stock: 0,
-    providerId: "6",
-    productCreateDate: "2024-06-05 20:24:28",
+    providerId: 6,
+    productDescription: "2024-06-05 20:24:28",
   },
   {
     productId: 1000841,
@@ -23,28 +25,28 @@ export const mockGoods = [
     productPrice: 0.0,
     productCategoryName: "ooparts",
     stock: 0,
-    providerId: "6",
-    productCreateDate: "2024-06-06 15:20:41",
+    providerId: 6,
+    productDescription: "2024-06-06 15:20:41",
   },
 ];
 
-export const mockAddresses = [
+export const mockAddresses: Address[] = [
   {
-    name: "AerVento",
-    tel: "12345612345",
-    address:
+    receiver: "AerVento",
+    userPhone: "12345612345",
+    addressName:
       "address-address-address-address-address-address-address-address-address",
   },
   {
-    name: "AerVento",
-    tel: "12345612345",
-    address:
+    receiver: "AerVento",
+    userPhone: "12345612345",
+    addressName:
       "address-address-address-address-address-address-address-address-address",
   },
   {
-    name: "AerVento",
-    tel: "12345612345",
-    address:
+    receiver: "AerVento",
+    userPhone: "12345612345",
+    addressName:
       "address-address-address-address-address-address-address-address-address",
   },
 ];

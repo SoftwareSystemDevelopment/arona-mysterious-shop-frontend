@@ -22,9 +22,9 @@ export default () => {
           <For each={data()}>
             {(item) => (
               <tr class="hover:bg-white/40">
-                <td class="border p-2">{item.name}</td>
-                <td class="border p-2">{item.tel}</td>
-                <td class="border p-2">{item.address}</td>
+                <td class="border p-2">{item.receiver}</td>
+                <td class="border p-2">{item.userPhone}</td>
+                <td class="border p-2">{item.addressName}</td>
                 <td class="border p-2">
                   <button class="h-8 w-8 rounded-full bg-red-700 text-center text-white hover:bg-red-800 focus:outline-none">
                     X

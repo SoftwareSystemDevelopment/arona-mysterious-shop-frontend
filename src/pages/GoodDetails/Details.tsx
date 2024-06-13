@@ -22,12 +22,7 @@ export default (props: DetailsProps) => {
         <div class="flex flex-[2] flex-col justify-between px-4 py-2">
           <div class="space-y-2">
             <h1 class="text-3xl font-bold">{props.productName}</h1>
-            <p class="text-blue-400">
-              {
-                // TODO: good description
-                "商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述"
-              }
-            </p>
+            <p class="text-blue-400">{props.productDescription}</p>
           </div>
           <div class="flex flex-row-reverse">
             <span class="text-2xl font-bold text-red-600">￥{price()}</span>

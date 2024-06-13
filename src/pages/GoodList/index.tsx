@@ -4,14 +4,7 @@ import { GoodInfo, List, Response } from "~/data/interface";
 import { Card, GoodBrief, SearchBar } from "~/components";
 
 const queryFn = async () => {
-  const resp = await fetch("/api/product/list/vo", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      current: 1,
-      pageSize: 20,
-    }),
-  });
+  const resp = await fetch("/api/product/list/vo");
 
   const res: Response<List<GoodInfo>> = await resp.json();
 
