@@ -68,3 +68,11 @@ export interface CartItemInfo {
   productImage: string;
   quantity: number;
 }
+
+export interface AddressInfo {
+  addressAreaId: number;
+  addressUserId: number;
+  addressName: string;
+  receiver: string;
+  userPhone: string;
+}
