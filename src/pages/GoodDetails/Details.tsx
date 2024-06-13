@@ -1,4 +1,5 @@
 import { Match, Switch, createMemo, createSignal } from "solid-js";
+import { useNavigate } from "@solidjs/router";
 import { QueryFunction, createQuery } from "@tanstack/solid-query";
 import { GoodInfo, Response } from "~/data/interface";
 import { Button, Card } from "~/components";
@@ -20,6 +21,8 @@ const queryImageFn: QueryFunction<string> = async (props) => {
 interface DetailsProps extends GoodInfo {}
 
 export default (props: DetailsProps) => {
+  const navigate = useNavigate();
+
   const price = createMemo(() => Math.round(props.productPrice * 100) / 100);
 
   const query = createQuery(() => ({
@@ -48,7 +51,7 @@ export default (props: DetailsProps) => {
 
     if (res.data) {
       alert("加入购物车成功！");
-      // TODO: navigate to cart page
+      navigate("/cart");
     }
   };
 

@@ -48,3 +48,11 @@ export interface Order {
   shopName: string;
   good: GoodInfo;
 }
+
+export interface CartItemInfo {
+  productId: number;
+  productName: string;
+  productPrice: number;
+  productImage: string;
+  quantity: number;
+}
