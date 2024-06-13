@@ -4,9 +4,9 @@ import FormCustom from "./FormCustom";
 interface FormImageProps {
   id: string;
   label: string;
+  onSelect?: (file: File) => void;
 }
 
-// TODO: expose the image to parent
 export default (props: FormImageProps) => {
   const [imagePreview, setImagePreview] = createSignal<string | null>(null);
 
@@ -17,6 +17,11 @@ export default (props: FormImageProps) => {
     }
 
     const imageFile = files[0];
+
+    const callback = props.onSelect;
+    if (typeof callback !== "undefined") {
+      callback(imageFile);
+    }
 
     const imageReader = new FileReader();
     imageReader.onload = (e) => {

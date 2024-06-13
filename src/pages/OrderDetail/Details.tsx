@@ -33,7 +33,7 @@ const OrderItemBlock = (props: OrderItemBlockProps) => {
   }));
 
   const price = createMemo(() => {
-    return props.price * props.quantity;
+    return Math.round(props.price * props.quantity * 100) / 100;
   });
 
   return (
@@ -100,7 +100,7 @@ export default (props: DetailsProps) => {
     props.orderItems.forEach((item) => {
       res += item.price * item.quantity;
     });
-    return res;
+    return Math.round(res * 100) / 100;
   });
 
   const client = useQueryClient();

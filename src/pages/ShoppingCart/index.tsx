@@ -34,7 +34,7 @@ export default () => {
     query.data.forEach((item) => {
       res += item.productPrice * item.quantity;
     });
-    return res;
+    return Math.round(res * 100) / 100;
   });
 
   const addressQuery = createQuery<AddressInfo[]>(() => ({
@@ -125,7 +125,6 @@ export default () => {
                       ￥{allPrice()}
                     </span>
                   </span>
-                  {/* TODO: address */}
                   <div class="flex justify-end">
                     <Button onClick={makeOrder}>下单</Button>
                   </div>

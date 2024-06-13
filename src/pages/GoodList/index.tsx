@@ -1,10 +1,10 @@
 import { For, Match, Switch } from "solid-js";
 import { createQuery } from "@tanstack/solid-query";
 import { GoodInfo, List, Response } from "~/data/interface";
-import { Card, GoodBrief, SearchBar } from "~/components";
+import { Card, GoodBrief } from "~/components";
 
 const queryFn = async () => {
-  const resp = await fetch("/api/product/list/vo");
+  const resp = await fetch("/api/product/list/vo?size=100");
 
   const res: Response<List<GoodInfo>> = await resp.json();
 
@@ -22,10 +22,7 @@ export default () => {
   }));
 
   return (
-    <div class="flex flex-col items-center space-y-4">
-      <Card class="w-4/5 max-w-[1080px]">
-        <SearchBar />
-      </Card>
+    <div class="flex flex-col items-center">
       <Switch>
         <Match when={query.isPending}>
           <Card class="flex w-4/5 max-w-[1080px] flex-col items-center space-y-4 py-8">

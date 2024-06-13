@@ -24,11 +24,19 @@ export interface List<T> {
   total: number;
 }
 
+export type GoodCategory =
+  | "report"
+  | "exp_orb"
+  | "ue_exp_material"
+  | "bd"
+  | "skill_book"
+  | "ooparts";
+
 export interface GoodInfo {
   productId: number;
   productName: string;
   productPrice: number;
-  productCategoryName: string;
+  productCategoryName: GoodCategory;
   stock: number;
   providerId: number;
   productDescription: string;

@@ -2,7 +2,7 @@ import { JSX, Show } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { Response } from "~/data/interface";
 import { useState } from "~/store";
-import { Button, SearchBar } from "~/components";
+import { Button } from "~/components";
 
 interface MenuItemProps {
   href: string;
@@ -53,7 +53,6 @@ export default () => {
         <MenuItem href="/cart">购物车</MenuItem>
       </div>
       <div class="flex items-center space-x-3">
-        <SearchBar />
         <Show
           when={state.currentUser}
           fallback={
@@ -67,6 +66,11 @@ export default () => {
             <>
               <span>你好，{me().userName}！</span>
               <Button onClick={() => navigate("/user/basic")}>个人中心</Button>
+              <Show when={me().userRole === "provider"}>
+                <Button onClick={() => navigate("/goods/upload")}>
+                  创建商品
+                </Button>
+              </Show>
               <Button onClick={onLogout}>注销</Button>
             </>
           )}

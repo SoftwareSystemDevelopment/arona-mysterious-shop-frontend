@@ -62,18 +62,18 @@ export default (props: DetailsProps) => {
           <Switch>
             <Match when={query.isPending}>
               <img
-                class="rounded-md"
+                class="max-h-[300px] rounded-md"
                 src="/arona-mysterious-shop-frontend/img1.webp"
               />
             </Match>
             <Match when={query.isError}>
               <img
-                class="rounded-md"
+                class="max-h-[300px] rounded-md"
                 src="/arona-mysterious-shop-frontend/img1.webp"
               />
             </Match>
             <Match when={query.isSuccess}>
-              <img class="rounded-md" src={query.data} />
+              <img class="max-h-[300px] rounded-md" src={query.data} />
             </Match>
           </Switch>
         </div>

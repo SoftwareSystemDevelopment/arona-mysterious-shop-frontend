@@ -14,7 +14,7 @@ const OrderItem = (props: OrderItemProps) => {
     props.orderItems.forEach((item) => {
       res += item.price * item.quantity;
     });
-    return res;
+    return Math.round(res * 100) / 100;
   });
 
   const onClick = () => {
