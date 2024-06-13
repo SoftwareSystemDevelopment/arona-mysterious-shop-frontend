@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { Show, createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { Response } from "~/data/interface";
 import { Button, Card, Form } from "~/components";
@@ -9,6 +9,7 @@ export default () => {
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
   const [passwd2, setPasswd2] = createSignal("");
+  const [isProvider, setIsProvider] = createSignal(false);
 
   const onRegister = async () => {
     const user = username().trim();
@@ -27,7 +28,7 @@ export default () => {
         userAccount: user,
         userName: user,
         userPassword: pass,
-        userRole: "user",
+        userRole: isProvider() ? "provider" : "user",
       }),
     });
 
@@ -73,13 +74,28 @@ export default () => {
             value={passwd2()}
             required
           />
-          <div class="flex justify-between">
+          <div class="flex items-center justify-between">
             <label class="inline-flex cursor-pointer items-center">
-              <input type="checkbox" value="" class="peer sr-only" />
-              <div class="peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"></div>
-              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                我是商家
-              </span>
+              <input
+                type="checkbox"
+                onInput={(e) => setIsProvider(e.currentTarget.checked)}
+                checked={isProvider()}
+                class="peer sr-only"
+              />
+              <div class="peer relative flex h-6 items-center rounded-full bg-gray-200 px-2 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-[68px] peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300">
+                <Show
+                  when={isProvider()}
+                  fallback={
+                    <span class="ms-5 select-none text-sm font-medium text-gray-900">
+                      我是用户
+                    </span>
+                  }
+                >
+                  <span class="me-5 select-none text-sm font-medium text-white">
+                    我是商家
+                  </span>
+                </Show>
+              </div>
             </label>
             <span class="text-sm font-medium">
               已经注册？前往
