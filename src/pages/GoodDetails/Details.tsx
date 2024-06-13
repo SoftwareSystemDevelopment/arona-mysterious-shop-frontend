@@ -2,6 +2,7 @@ import { Match, Switch, createMemo, createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { QueryFunction, createQuery } from "@tanstack/solid-query";
 import { GoodInfo, Response } from "~/data/interface";
+import { goodCategoryMap } from "~/data/constants";
 import { Button, Card } from "~/components";
 
 const queryImageFn: QueryFunction<string> = async (props) => {
@@ -80,6 +81,9 @@ export default (props: DetailsProps) => {
         <div class="flex flex-[2] flex-col justify-between px-4 py-2">
           <div class="space-y-2">
             <h1 class="text-3xl font-bold">{props.productName}</h1>
+            <span class="rounded-md bg-blue-600 px-2 py-1 text-sm text-white">
+              {goodCategoryMap[props.productCategoryName]}
+            </span>
             <p class="text-blue-400">{props.productDescription}</p>
           </div>
           <div class="flex flex-row-reverse">
