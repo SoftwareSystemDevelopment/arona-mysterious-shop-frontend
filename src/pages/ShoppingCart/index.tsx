@@ -45,6 +45,10 @@ export default () => {
       const res: Response<AddressInfo[]> = await resp.json();
 
       if (res.data === null) {
+        if (res.code === 40400) {
+          return [];
+        }
+
         throw new Error(res.message);
       }
 

@@ -1,11 +1,13 @@
 export type Response<T> = OkResponse<T> | ErrResponse;
 
 interface OkResponse<T> {
+  code: number;
   data: T;
   message: "ok";
 }
 
 interface ErrResponse {
+  code: number;
   data: null;
   message: string;
 }
