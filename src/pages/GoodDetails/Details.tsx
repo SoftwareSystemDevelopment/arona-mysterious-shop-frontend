@@ -29,6 +29,29 @@ export default (props: DetailsProps) => {
 
   const [count, setCount] = createSignal(0);
 
+  const addToCart = async () => {
+    const resp = await fetch("/api/cart/item", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        productId: props.productId,
+        quantity: count(),
+      }),
+    });
+
+    const res: Response<boolean> = await resp.json();
+
+    if (res.data === null) {
+      alert(`失败！原因：${res.message}`);
+      return;
+    }
+
+    if (res.data) {
+      alert("加入购物车成功！");
+      // TODO: navigate to cart page
+    }
+  };
+
   return (
     <div class="flex w-4/5 max-w-[1080px] space-x-4">
       <Card class="flex flex-[3] py-8">
@@ -61,35 +84,36 @@ export default (props: DetailsProps) => {
           </div>
         </div>
       </Card>
-      <Card class="flex flex-1 flex-col justify-around py-8">
-        <div class="flex space-x-2">
-          <button
-            onClick={() => setCount((c) => c - 1)}
-            disabled={count() === 0}
-            class="h-8 w-8 rounded-full bg-blue-700 text-center text-white hover:bg-blue-800 focus:outline-none disabled:bg-gray-500"
-          >
-            -
-          </button>
-          <input
-            type="number"
-            min={1}
-            step={1}
-            class="h-8 w-full flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2 text-center text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-            onInput={(e) => setCount(parseInt(e.currentTarget.value))}
-            value={count()}
-          />
-          <button
-            onClick={() => setCount((c) => c + 1)}
-            class="h-8 w-8 rounded-full bg-blue-700 text-center text-white hover:bg-blue-800 focus:outline-none"
-          >
-            +
-          </button>
-        </div>
-        <div class="flex justify-between">
-          <Button>加入购物车</Button>
-          <Button>立即购买</Button>
-        </div>
-      </Card>
+      <div class="h-full flex-1">
+        <Card class="flex flex-col space-y-2">
+          <div class="flex space-x-2">
+            <button
+              onClick={() => setCount((c) => c - 1)}
+              disabled={count() === 0}
+              class="h-8 w-8 rounded-full bg-blue-700 text-center text-white hover:bg-blue-800 focus:outline-none disabled:bg-gray-500"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              min={1}
+              step={1}
+              class="h-8 w-full flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2 text-center text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              onInput={(e) => setCount(parseInt(e.currentTarget.value))}
+              value={count()}
+            />
+            <button
+              onClick={() => setCount((c) => c + 1)}
+              class="h-8 w-8 rounded-full bg-blue-700 text-center text-white hover:bg-blue-800 focus:outline-none"
+            >
+              +
+            </button>
+          </div>
+          <div class="flex justify-center">
+            <Button onClick={addToCart}>加入购物车</Button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };
