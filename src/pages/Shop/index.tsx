@@ -1,5 +1,5 @@
 import { For, createSignal } from "solid-js";
-import { Button, Card, GoodBrief, SearchBar } from "~/components";
+import { Button, Card, GoodBrief } from "~/components";
 import { mockGoods } from "~/data/mock";
 
 // TODO: filters
@@ -16,9 +16,6 @@ export default () => {
         <p class="text-center text-lg text-blue-400">
           店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍
         </p>
-        <div class="w-full">
-          <SearchBar />
-        </div>
       </Card>
       <Card class="flex w-4/5 max-w-[1080px] flex-col space-y-4 px-4 py-8">
         <div class="flex items-center justify-center">
