@@ -44,7 +44,7 @@ export default (props: CartItemProps) => {
     const imageSrc = props.productImage;
 
     if (imageSrc === null) {
-      return "/arona-mysterious-shop-frontend/img1.webp";
+      return "/arona-mysterious-shop-frontend/default.webp";
     }
 
     return `/api/${imageSrc}`;

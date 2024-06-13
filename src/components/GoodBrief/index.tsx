@@ -11,7 +11,7 @@ const queryImageFn: QueryFunction<string> = async (props) => {
   const res: Response<string> = await resp.json();
 
   if (res.data === null) {
-    throw new Error(res.message);
+    return "/arona-mysterious-shop-frontend/default.webp";
   }
 
   return `/api/${res.data}`;
@@ -32,10 +32,10 @@ export default (props: GoodBriefProps) => {
       <A href={`/goods/${props.productId}`}>
         <Switch>
           <Match when={query.isPending}>
-            <img src="/arona-mysterious-shop-frontend/img1.webp" />
+            <img src="/arona-mysterious-shop-frontend/default.webp" />
           </Match>
           <Match when={query.isError}>
-            <img src="/arona-mysterious-shop-frontend/img1.webp" />
+            <img src="/arona-mysterious-shop-frontend/default.webp" />
           </Match>
           <Match when={query.isSuccess}>
             <img src={query.data} />

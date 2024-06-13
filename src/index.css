@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-image: url("/110577319_p0.avif");
+  background-image: url("/background.avif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

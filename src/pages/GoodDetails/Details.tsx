@@ -12,7 +12,7 @@ const queryImageFn: QueryFunction<string> = async (props) => {
   const res: Response<string> = await resp.json();
 
   if (res.data === null) {
-    throw new Error(res.message);
+    return "/arona-mysterious-shop-frontend/default.webp";
   }
 
   return `/api/${res.data}`;
@@ -63,13 +63,13 @@ export default (props: DetailsProps) => {
             <Match when={query.isPending}>
               <img
                 class="max-h-[300px] rounded-md"
-                src="/arona-mysterious-shop-frontend/img1.webp"
+                src="/arona-mysterious-shop-frontend/default.webp"
               />
             </Match>
             <Match when={query.isError}>
               <img
                 class="max-h-[300px] rounded-md"
-                src="/arona-mysterious-shop-frontend/img1.webp"
+                src="/arona-mysterious-shop-frontend/default.webp"
               />
             </Match>
             <Match when={query.isSuccess}>

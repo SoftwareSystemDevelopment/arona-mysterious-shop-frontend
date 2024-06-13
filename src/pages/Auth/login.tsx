@@ -1,17 +1,15 @@
 import { createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
+import { useQueryClient } from "@tanstack/solid-query";
 import { Response, User } from "~/data/interface";
-import { useState } from "~/store";
-import { Button, Card, Checkbox, Form } from "~/components";
+import { Button, Card, Form } from "~/components";
 
 export default () => {
+  const client = useQueryClient();
   const navigate = useNavigate();
-
-  const [_state, setState] = useState();
 
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
-  const [remember, setRemember] = createSignal(false);
 
   const onLogin = async () => {
     const user = username().trim();
@@ -29,7 +27,7 @@ export default () => {
     const res: Response<User> = await resp.json();
 
     if (res.data !== null) {
-      setState("currentUser", res.data);
+      client.invalidateQueries({ queryKey: ["users", "self"] });
       alert(`登录成功！用户名：${res.data.userAccount}`);
       navigate("/");
     } else {
@@ -60,13 +58,7 @@ export default () => {
             value={password()}
             required
           />
-          <div class="flex items-center justify-between">
-            <Checkbox
-              id="remember"
-              label="记住我"
-              onInput={(e) => setRemember(e.currentTarget.checked)}
-              checked={remember()}
-            />
+          <div class="flex justify-end">
             <span class="text-sm font-medium">
               还没有账号？前往
               <A class="text-blue-500 hover:text-blue-900" href="/register">

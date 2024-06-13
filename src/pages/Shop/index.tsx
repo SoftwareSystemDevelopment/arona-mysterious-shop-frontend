@@ -1,3 +1,5 @@
+/// TODO(yur): review this
+
 import { For, createSignal } from "solid-js";
 import { Button, Card, GoodBrief } from "~/components";
 import { mockGoods } from "~/data/mock";
