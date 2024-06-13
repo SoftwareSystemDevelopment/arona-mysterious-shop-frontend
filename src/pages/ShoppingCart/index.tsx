@@ -1,4 +1,5 @@
-import { For, Match, Switch, createMemo } from "solid-js";
+import { For, Match, Show, Switch, createMemo } from "solid-js";
+import { A } from "@solidjs/router";
 import { createQuery } from "@tanstack/solid-query";
 import { CartItemInfo, List, Response } from "~/data/interface";
 import { Button, Card } from "~/components";
@@ -28,14 +29,13 @@ export default () => {
     }
 
     let res = 0;
-
     query.data.forEach((item) => {
       res += item.productPrice * item.quantity;
     });
-
     return res;
   });
 
+  // TODO: make order
   const makeOrder = () => {
     console.log("TODO: make order");
   };
@@ -54,20 +54,38 @@ export default () => {
           </Card>
         </Match>
         <Match when={query.isSuccess}>
-          <Card class="w-4/5 max-w-[1080px] p-4">
-            <For each={query.data}>{(item) => <CartItem {...item} />}</For>
-            <div class="mt-4 flex justify-end">
-              <div class="flex flex-col space-y-2">
-                <span class="text-2xl">
-                  总价：
-                  <span class="font-semibold text-red-600">￥{allPrice()}</span>
-                </span>
-                <div class="flex justify-end">
-                  <Button onClick={makeOrder}>下单</Button>
+          <Show
+            when={query.data!.length > 0}
+            fallback={
+              <Card class="flex w-2/5 max-w-[540px] flex-col items-center space-y-8 py-20">
+                <span class="text-2xl">购物车空空如也~</span>
+                <A
+                  class="text-lg font-semibold text-blue-500 underline hover:text-blue-900"
+                  href="/goods"
+                >
+                  去购物
+                </A>
+              </Card>
+            }
+          >
+            <Card class="w-4/5 max-w-[1080px] p-4">
+              <For each={query.data}>{(item) => <CartItem {...item} />}</For>
+              <div class="mt-4 flex justify-end">
+                <div class="flex flex-col space-y-2">
+                  <span class="text-2xl">
+                    总价：
+                    <span class="font-semibold text-red-600">
+                      ￥{allPrice()}
+                    </span>
+                  </span>
+                  {/* TODO: address */}
+                  <div class="flex justify-end">
+                    <Button onClick={makeOrder}>下单</Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </Show>
         </Match>
       </Switch>
     </div>
