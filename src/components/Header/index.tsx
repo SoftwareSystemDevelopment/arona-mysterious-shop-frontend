@@ -1,4 +1,4 @@
-import { JSX, Show } from "solid-js";
+import { JSX, Show, createMemo } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { createQuery, useQueryClient } from "@tanstack/solid-query";
 import { Response, User } from "~/data/interface";
@@ -47,6 +47,20 @@ export default () => {
     }
   };
 
+  const isLoggedIn = createMemo(() => {
+    if (!query.isSuccess) {
+      return false;
+    }
+
+    const data = query.data;
+
+    if (typeof data === "undefined" || data === null) {
+      return false;
+    }
+
+    return true;
+  });
+
   return (
     <nav class="mb-3 flex h-16 w-full items-center justify-between bg-white/50 px-24 backdrop-blur-md">
       <A class="flex items-center space-x-3 hover:text-gray-700" href="/">
@@ -58,7 +72,7 @@ export default () => {
       <div class="space-x-8">
         <MenuItem href="/">主页</MenuItem>
         <MenuItem href="/goods">商品列表</MenuItem>
-        <Show when={query.data !== null}>
+        <Show when={isLoggedIn()}>
           <MenuItem href="/cart">购物车</MenuItem>
         </Show>
       </div>
